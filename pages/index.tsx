@@ -25,8 +25,14 @@ const Status = ({ online}: Props) => {
 }
 const Home: NextPage<Props> = ({ online }) => (
   <div>
-    <h1>Is GitHub Online?</h1>
+    <h1>Is github.com online?</h1>
     <Status online={online}/>
+    <style jsx>{`
+      h1 {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    `}</style>
   </div>
 )
 
