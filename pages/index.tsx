@@ -1,12 +1,16 @@
 import { NextPage } from 'next';
 
-const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => (
-  <h1>Hello world! - user agent: {userAgent}</h1>
-);
+interface Props {
+  online: boolean;
+}
 
-Home.getInitialProps = async ({ req }) => {
-  const userAgent = req ? req.headers['user-agent'] || '' : navigator.userAgent;
-  return { userAgent };
-};
+const Home: NextPage<Props> = ({ online }) => (
+  <h1>Is GitHub Online? {online ? 'Yes' : 'No'}</h1>
+)
+
+Home.getInitialProps = async (ctx) => {
+  const online = true
+  return { online }
+}
 
 export default Home;
