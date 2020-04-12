@@ -5,8 +5,29 @@ interface Props {
   online: boolean;
 }
 
+const Status = ({ online}: Props) => {
+  return (
+    <div>
+      <div className='status'>{ online ? '👍' : '👎' }</div>
+      <style jsx>{`
+          .status {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            font-size: 6em;
+          }
+        `}</style>
+    </div>
+  )
+}
 const Home: NextPage<Props> = ({ online }) => (
-  <h1>Is GitHub Online? {online ? 'Yes' : 'No'}</h1>
+  <div>
+    <h1>Is GitHub Online?</h1>
+    <Status online={online}/>
+  </div>
 )
 
 Home.getInitialProps = async (ctx) => {
